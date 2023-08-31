@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 14:13:17 by nplieger          #+#    #+#             */
-/*   Updated: 2023/08/31 14:51:47 by nplieger         ###   ########.fr       */
+/*   Updated: 2023/08/31 15:21:29 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #pragma once
@@ -79,7 +79,7 @@ Array<T>::Array(unsigned int n): _size(n)
 }
 
 template <class T>
-Array<T>::Array(const Array &other): _size(other._size), _arr(new T[other._size])
+Array<T>::Array(const Array &other): _size(other._size)
 {
 	std::cout << "\033[36;2m";
 	std::cout << "Array : Copy constructor called";
