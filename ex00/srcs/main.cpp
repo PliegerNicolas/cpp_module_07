@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 11:41:13 by nplieger          #+#    #+#             */
-/*   Updated: 2023/08/31 13:25:22 by nplieger         ###   ########.fr       */
+/*   Updated: 2023/08/31 13:57:04 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "whatever.hpp"
@@ -46,22 +46,28 @@ class Awesome
 		int _n;
 };
 
+std::ostream	&operator<<(std::ostream &os, const Awesome &awesome)
+{
+	os << awesome.getN();
+	return (os);
+}
+
 static void	testClass(void)
 {
 	std::cout << "\033[36;4m" << "testClass():" << CLEAR << std::endl;
 	Awesome	e(6);
 	Awesome	f(-2);
 
-	std::cout << GREEN << "e = " << e.getN() << ", f = " << f.getN() << CLEAR << std::endl;
+	std::cout << GREEN << "e = " << e << ", f = " << f << CLEAR << std::endl;
 	std::cout << GRAY << "::swap(e, f)" << CLEAR << std::endl;
 	::swap(e, f);
-	std::cout << GREEN << "e = " << e.getN() << ", f = " << f.getN() << CLEAR << std::endl;
+	std::cout << GREEN << "e = " << e << ", f = " << f << CLEAR << std::endl;
 
 	std::cout << std::endl;
 
-	std::cout << GRAY << "min(e, f) = " << CLEAR << GREEN << ::min(e, f).getN();
+	std::cout << GRAY << "min(e, f) = " << CLEAR << GREEN << ::min(e, f);
 	std::cout << CLEAR << std::endl;
-	std::cout << GRAY << "max(e, f) = " << CLEAR << GREEN << ::max(e, f).getN();
+	std::cout << GRAY << "max(e, f) = " << CLEAR << GREEN << ::max(e, f);
 	std::cout << CLEAR << std::endl;
 
 	std::cout << std::endl;
