@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 14:12:55 by nplieger          #+#    #+#             */
-/*   Updated: 2023/08/31 15:24:03 by nplieger         ###   ########.fr       */
+/*   Updated: 2023/08/31 15:27:47 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "Array.hpp"
@@ -122,19 +122,13 @@ static void	testCopyConstructor(void)
 {
 	std::cout << "\033[36;4m" << "testCopyConstructor():" << CLEAR << std::endl;
 
-	std::cout << GRAY <<"Array<std::string> arr1" << CLEAR << std::endl;
 	Array<std::string>	arr1(10);
-
-	std::cout << GREEN << "Arr1 is populated:" << GRAY << std::endl;
+	std::cout << GREEN << "Fill arr1" << GRAY << std::endl;
 	for (size_t i = 0; i < arr1.size(); i++)
-		arr1[i] = "string" + std::to_string(i + (i % 2));
-	for (size_t i = 0; i < arr1.size(); i++)
-		std::cout << arr1[i] << std::endl;
+		arr1[i] = "string" + std::to_string(i);
 
-	std::cout << GREEN << "Create Arr2 from Arr1:" << GRAY << std::endl;
+	std::cout << GREEN << "Arr2(arr1)" << GRAY << std::endl;
 	Array<std::string>	arr2(arr1);
-	for (size_t i = 0; i < arr2.size(); i++)
-		std::cout << arr2[i] << std::endl;
 
 	std::cout << GREEN << "arr2[5] = 42:" << GRAY << std::endl;
 	arr2[5] = "42";
@@ -144,6 +138,14 @@ static void	testCopyConstructor(void)
 	std::cout << GREEN << "arr2:" << GRAY << std::endl;
 	for (size_t i = 0; i < arr2.size(); i++)
 		std::cout << arr2[i] << std::endl;
+
+	std::cout << GREEN << "arr3 = arr1:" << GRAY << std::endl;
+	Array<std::string>	arr3;
+	arr3 = arr1;
+	std::cout << GREEN << "arr3:" << GRAY << std::endl;
+	for (size_t i = 0; i < arr3.size(); i++)
+		std::cout << arr3[i] << std::endl;
+
 
 }
 
