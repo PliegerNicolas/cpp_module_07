@@ -6,18 +6,25 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 13:26:09 by nplieger          #+#    #+#             */
-/*   Updated: 2023/08/31 14:11:34 by nplieger         ###   ########.fr       */
+/*   Updated: 2023/09/04 13:30:19 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "iter.hpp"
 
-#include <string>
+#include <sstream>
 
 #define SIZE 10
 #define RED "\033[031m"
 #define GREEN "\033[032m"
 #define GRAY "\033[037;2m"
 #define CLEAR "\033[0m"
+
+std::string	intToString(int value)
+{
+	std::stringstream ss;
+	ss << value;
+	return ss.str();
+}
 
 /* start custom class */
 class Awesome
@@ -103,7 +110,7 @@ static void	testString(void)
 
 	std::cout << GRAY << "Populating 'double arr[" << SIZE << "]'" << CLEAR << std::endl;
 	for (int i = 0; i < SIZE; i++)
-		arr[i] = "string" + std::to_string(i);
+		arr[i] = "string" + intToString(i);
 
 	std::cout << GRAY << "Call ::iter(arr, SIZE, &print)" << CLEAR << std::endl;
 	::iter(arr, SIZE, &print);

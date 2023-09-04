@@ -6,17 +6,24 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 14:12:55 by nplieger          #+#    #+#             */
-/*   Updated: 2023/08/31 15:27:47 by nplieger         ###   ########.fr       */
+/*   Updated: 2023/09/04 13:31:37 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "Array.hpp"
 
-#include <string>
+#include <sstream>
 
 #define RED "\033[31m"
 #define GREEN "\033[32m"
 #define GRAY "\033[37m"
 #define CLEAR "\033[0m"
+
+std::string	intToString(int value)
+{
+	std::stringstream ss;
+	ss << value;
+	return ss.str();
+}
 
 static void	testIntArray(void)
 {
@@ -102,7 +109,7 @@ static void	testStringArray(void)
 		std::cout << arr2[i] << std::endl;
 	std::cout << GREEN << "Fill arr2" << GRAY << std::endl;
 	for (size_t i = 0; i < arr2.size(); i++)
-		arr2[i] = "string" + std::to_string(i);
+		arr2[i] = "string" + intToString(i);
 	std::cout << GREEN << "Print arr2" << GRAY << std::endl;
 	for (size_t i = 0; i < arr2.size(); i++)
 		std::cout << arr2[i] << std::endl;
@@ -125,7 +132,7 @@ static void	testCopyConstructor(void)
 	Array<std::string>	arr1(10);
 	std::cout << GREEN << "Fill arr1" << GRAY << std::endl;
 	for (size_t i = 0; i < arr1.size(); i++)
-		arr1[i] = "string" + std::to_string(i);
+		arr1[i] = "string" + intToString(i);
 
 	std::cout << GREEN << "Arr2(arr1)" << GRAY << std::endl;
 	Array<std::string>	arr2(arr1);

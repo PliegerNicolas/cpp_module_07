@@ -17,7 +17,7 @@
 NAME			=			a.out
 AR				=			ar -rcs
 CC				=			c++
-CFLAGS			=
+CFLAGS			=			-std=c++98 -pedantic
 RUN_PARAM		=			
 
 #* ************************************************************************** *#
