@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 14:13:17 by nplieger          #+#    #+#             */
-/*   Updated: 2023/08/31 15:21:29 by nplieger         ###   ########.fr       */
+/*   Updated: 2023/09/24 12:59:34 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #pragma once
@@ -100,6 +100,10 @@ Array<T>	&Array<T>::operator=(const Array &other)
 	if (this != &other)
 	{
 		_size = other._size;
+
+		if (_arr)
+			delete[] _arr;
+
 		_arr = new T[_size];
 		for(unsigned int i = 0; i < _size; i++)
 			_arr[i] = other._arr[i];
