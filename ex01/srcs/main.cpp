@@ -6,7 +6,7 @@
 /*   By: nplieger <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 13:26:09 by nplieger          #+#    #+#             */
-/*   Updated: 2023/09/04 13:30:19 by nplieger         ###   ########.fr       */
+/*   Updated: 2023/09/26 13:18:03 by nplieger         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "iter.hpp"
@@ -25,6 +25,20 @@ std::string	intToString(int value)
 	ss << value;
 	return ss.str();
 }
+
+/* start test functions */
+template<typename T>
+inline void	print(T &input)
+{
+	std::cout << input << std::endl;
+}
+
+template<typename T>
+static void	increment(T &nbr)
+{
+	nbr++;
+}
+/* end test functions */
 
 /* start custom class */
 class Awesome
@@ -61,13 +75,6 @@ std::ostream	&operator<<(std::ostream &os, const Awesome &awesome)
 }
 /* end custom class */
 
-/* start test functions */
-static void	increment(int &nbr)
-{
-	nbr++;
-}
-/* end test functions */
-
 static void	testInt(void)
 {
 	std::cout << "\033[36;4m" << "testInt():" << CLEAR << std::endl;
@@ -79,11 +86,11 @@ static void	testInt(void)
 		arr[i] = i;
 
 	std::cout << GRAY << "Call ::iter(arr, SIZE, &increment)" << CLEAR << std::endl;
-	::iter(arr, SIZE, &increment);
+	iter(arr, SIZE, &increment<int>);
 	std::cout << std::endl;
 
 	std::cout << GRAY << "Call ::iter(arr, SIZE, &print)" << CLEAR << std::endl;
-	::iter(arr, SIZE, &print);
+	iter(arr, SIZE, &print<const int>);
 	std::cout << std::endl;
 }
 
@@ -98,7 +105,7 @@ static void	testDouble(void)
 		arr[i] = i;
 
 	std::cout << GRAY << "Call ::iter(arr, SIZE, &print)" << CLEAR << std::endl;
-	::iter(arr, SIZE, &print);
+	::iter(arr, SIZE, &print<double>);
 	std::cout << std::endl;
 }
 
@@ -113,7 +120,7 @@ static void	testString(void)
 		arr[i] = "string" + intToString(i);
 
 	std::cout << GRAY << "Call ::iter(arr, SIZE, &print)" << CLEAR << std::endl;
-	::iter(arr, SIZE, &print);
+	::iter(arr, SIZE, &print<const std::string>);
 	std::cout << std::endl;
 }
 
@@ -128,7 +135,7 @@ static void	testClass(void)
 		arr[i] = Awesome(i);
 
 	std::cout << GRAY << "Call ::iter(arr, SIZE, &print)" << CLEAR << std::endl;
-	::iter(arr, SIZE, &print);
+	::iter(arr, SIZE, &print<const Awesome>);
 	std::cout << std::endl;
 }
 
